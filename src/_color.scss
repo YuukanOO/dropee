@@ -1,0 +1,58 @@
+/**
+ *     __                               
+ * .--|  |.----.-----.-----.-----.-----.
+ * |  _  ||   _|  _  |  _  |  -__|  -__|
+ * |_____||__| |_____|   __|_____|_____|
+ *                   |__|      -- color         
+ *
+ * A tiny SCSS Toolkit to ease your workflow!
+ * https://github.com/YuukanOO/dropee
+ */
+
+// This is your color palette, use whatever you want!
+// If you put a single value, variants will be computed via the $variants variable
+// but if you want custom color variants, just use a list from darkest to brightest.
+$palette: (
+  brand: red,
+  accent: blue,
+  text: (black, rgba(black, 0.87), rgba(black, 0.54)),
+) !default;
+
+// Variants are use for applying "automatic" darken / lighten on the base color palette
+$variants: (
+  -2: 20%,
+  -1: 10%,
+  1: 15%,
+  2: 25%,
+) !default;
+
+// color($name, $variant)
+//
+// Gets a color value.
+//
+// $name    - Name of the color in the palette
+// $variant - Variation to apply. By default, I use -2 to 2, from darkest to brightest,
+//            0 being the default color in the palette
+@function color($name, $variant: 0) {
+  $data: map-get($palette, $name);
+  
+  @if length($data) == 1 {
+    @if ($variant == 0) {
+      @return $data;
+    }
+    @else {
+      $v-data: map-get($variants, $variant);
+      
+      @if ($variant > 0) {
+        @return lighten($data, $v-data);
+      }
+      @else {
+        @return darken($data, $v-data);
+      }
+    }
+  }
+  
+  $options: ceil(length($data) / 2) + $variant;
+    
+  @return nth($data, $options);
+}

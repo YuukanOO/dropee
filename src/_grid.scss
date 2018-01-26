@@ -1,0 +1,92 @@
+/**
+ *     __                               
+ * .--|  |.----.-----.-----.-----.-----.
+ * |  _  ||   _|  _  |  _  |  -__|  -__|
+ * |_____||__| |_____|   __|_____|_____|
+ *                   |__|       -- grid         
+ *
+ * A tiny SCSS Toolkit to ease your workflow!
+ * https://github.com/YuukanOO/dropee
+ */
+
+// This line is here to keep gaps value when calling the cell() mixin
+// When you call row() or cell(), it will keep 
+$__gap: 0;
+
+// flex($direction, $main, $cross, $wrap, $gap)
+//
+// Base mixin used to apply common flex properties when using col() or row().
+// Idealy, you should prefer col() or row() instead of this.
+//
+// $direction   - Flex direction to set
+// $main        - Main axis positioning
+// $cross       - Cross axis positioning
+// $wrap        - Flex wrap to set
+// $gap         - Gap to apply
+@mixin flex($direction, $main, $cross, $wrap, $gap) {
+  $__gap: $gap !global;
+  
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $main;
+  align-items: $cross;
+  flex-wrap: $wrap;
+  
+  @if ($gap != 0) {
+    margin: -($gap/2);
+  }
+}
+
+// row($x, $y, $wrap, $gap)
+//
+// Apply to an element to make it a container for elements with an horizontal
+// direction.
+//
+// $x     - Horizontal alignment
+// $y     - Vertical alignment
+// $wrap  - Flex wrap to set (Default to wrap)
+// $gap   - Gap to apply (Default to 0)
+@mixin row($x: flex-start, $y: flex-start, $wrap: wrap, $gap: 0) {
+  @include flex(row, $x, $y, $wrap, $gap);
+}
+
+// col($x, $y, $wrap, $gap)
+//
+// Apply to an element to make it a container for elements with a vertical
+// direction.
+//
+// $x     - Horizontal alignment
+// $y     - Vertical alignment
+// $wrap  - Flex wrap to set (Default to nowrap)
+// $gap   - Gap to apply (Default to 0)
+@mixin col($x: flex-start, $y: flex-start, $wrap: nowrap, $gap: 0) {
+  @include flex(column, $y, $x, $wrap, $gap);
+}
+
+// cell($width, $grow, $shrink, $gap)
+//
+// Apply to an element to make it a cell inside a row or a col.
+//
+// $width   - Width of the element to apply for this cell, you can use a ratio or an absolute unit
+// $grow    - Grow flex factor (Default to 1)
+// $shrink  - Shrink flex factor (Default to 1)
+// $gap     - You can override the gap if you have nested row, col, but it defaults to the current row or cell gap
+@mixin cell($width: 0, $grow: 1, $shrink: 1, $gap: $__gap) {  
+  @if (unitless($width)) {
+    $width: 100% * $width;
+  }
+  
+  flex-basis: auto;
+  flex-grow: $grow;
+  flex-shrink: $shrink;
+  
+  @if ($gap != 0) {
+    margin: $gap/2;
+    @if ($width != 0) {
+      width: calc(#{$width} - #{$gap});
+    }
+  }
+  @else if ($width != 0) {
+    width: $width;
+  }
+}

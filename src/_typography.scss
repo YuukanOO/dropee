@@ -1,0 +1,69 @@
+/**
+ *     __                               
+ * .--|  |.----.-----.-----.-----.-----.
+ * |  _  ||   _|  _  |  _  |  -__|  -__|
+ * |_____||__| |_____|   __|_____|_____|
+ *                   |__| -- typography         
+ *
+ * A tiny SCSS Toolkit to ease your workflow!
+ * https://github.com/YuukanOO/dropee
+ */
+
+// This is your layout baseline, everything should fit within this baseline
+$baseline: 1.5 !default;
+
+// baseline($ratio)
+//
+// Retrieve a baseline value used to keep the flow flowing!
+//
+// $ratio - Number of *baseline to apply
+@function baseline($ratio: 1) {
+  @return $ratio * $baseline + rem;
+}
+
+// strip-units($number)
+//
+// Utility function to remote units from a number.
+//
+// $number  - Raw number to extract
+@function strip-units($number) {
+  @return $number / ($number * 0 + 1);
+}
+
+// line-height($size, $nb-of-lines)
+//
+// Computes the line-height relative to the given size and for the appropriate
+// number of lines.
+//
+// $size          - Font size
+// $nb-of-lines   - Number of lines to span
+@function line-height($size, $nb-of-lines: 1) {
+  @return $nb-of-lines * $baseline / strip-units($size);
+}
+
+// Containes types and their associated number of lines they should span
+// This is where you should put your stuff to be used with the type() mixin.
+// To define sizes, I usually follow http://www.modularscale.com/
+$types: (
+  body: (1, 1),
+  h6: (1.125, 1),
+  h5: (1.266, 1),
+  h4: (1.424, 1),
+  h3: (1.602, 2),
+  h2: (1.802, 2),
+  h1: (2.027, 2)
+) !default;
+
+// type($name)
+//
+// Sets the font-size and line-height property associated with the name given which
+// will be looked up in the $types map.
+//
+// $name  - Name of the type
+@mixin type($name) {
+  $data: map-get($types, $name);
+  $fs: nth($data, 1);
+
+  font-size: $fs + rem;
+  line-height: line-height($fs, nth($data, 2));
+}

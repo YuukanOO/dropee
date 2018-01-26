@@ -1,0 +1,11 @@
+{
+  "name": "dropee",
+  "version": "1.0.0",
+  "license": "MIT",
+  "scripts": {
+    "start": "node-sass -w -r -o ./examples ./examples/styles.scss"
+  },
+  "devDependencies": {
+    "node-sass": "^4.7.2"
+  }
+}
