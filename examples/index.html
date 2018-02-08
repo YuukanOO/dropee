@@ -71,6 +71,7 @@ color(text, 1);   // => rgba(black, 0.54)</pre>
       <div class="section">
           <h3 class="section__title"><a href="https://github.com/YuukanOO/dropee/raw/master/src/_typography.scss">_typography.scss</a></h3>
           <p>Keep a vertical flow without hassle! Define <code>$types</code> and <code>$baseline</code> variables and then use the mixin <code>type($name)</code> to apply font-size and line-height.</p>
+          <p>Use the function <code>baseline($ratio)</code> to keep the vertical rhythm for margins and paddings. It will output the value in relative units.</p>
           <pre>
 // Represents the height of one "line", it will be * by your html font size
 // example:
@@ -91,6 +92,10 @@ body {
   @include type(body);
   // => font-size: 1rem;
   // => line-height: 1.5;
+}
+
+p {
+  margin-bottom: baseline(2); // => 16px * 1em * 1.5 = 48px
 }</pre>
         <p class="section__output-title"><span>example output</span></p>
         <div class="section__output type-output">
