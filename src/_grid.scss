@@ -33,7 +33,7 @@ $__gap: 0;
   flex-wrap: $wrap;
   
   @if ($gap != 0) {
-    margin: -($gap/2);
+    margin: -($gap / 2);
   }
 }
 
@@ -81,7 +81,7 @@ $__gap: 0;
   flex-shrink: $shrink;
   
   @if ($gap != 0) {
-    margin: $gap/2;
+    margin: ($gap / 2);
     @if ($width != 0) {
       width: calc(#{$width} - #{$gap});
     }
