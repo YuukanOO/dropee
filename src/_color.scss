@@ -13,17 +13,19 @@
 // If you put a single value, variants will be computed via the $variants variable
 // but if you want custom color variants, just use a list from darkest to brightest.
 $palette: (
-  brand: red,
-  accent: blue,
+  brand: #C0CA33,
+  accent: #0277BD,
+  divider: rgba(black, 0.12),
   text: (black, rgba(black, 0.87), rgba(black, 0.54)),
+  text-inverse: white,
 ) !default;
 
 // Variants are use for applying "automatic" darken / lighten on the base color palette
 $variants: (
   -2: 20%,
   -1: 10%,
-  1: 15%,
-  2: 25%,
+  1: 10%,
+  2: 20%,
 ) !default;
 
 // color($name, $variant)

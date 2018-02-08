@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>dropee - A tiny SCSS Toolkit you can just drop in your project</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <div class="page__header page-header">
+        <h1 class="page-header__title"><span>drop</span>ee</h1>
+        <h2 class="page-header__description"><strong>dropee</strong> is a simple and easy to use toolkit trying to optimize your workflow for the most common problems without outputting anything. Your <strong>markup</strong>, your <strong>rules</strong>!</h2>
+        <div class="page-header__actions">
+          <p>Read the docs below <em>or</em></p>
+          <a class="btn" href="https://github.com/YuukanOO/dropee" title="Get on github!">Get on github</a>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="section">
+        <h3 class="section__title"><a href="https://github.com/YuukanOO/dropee/raw/master/src/_color.scss">_color.scss</a></h3>
+        <p>Ease the management of colors in your project. Use <code>$palette</code> and <code>$variants</code> variables to control your palette easily and then use the function <code>color($name, $variant)</code> to get a color value.</p>
+        <p>Basically, you just define your base colors and variants lighten (positive) or darken (negative) your base colors. This way, you don't have to define variables for that tiny lighten border color.</p>
+
+        <pre>
+$palette: (
+  // Simplest case, variant will be computed by using $variants
+  brand: #C0CA33,
+  // Or define specific variants by using a list
+  text: ( black, rgba(black, 0.87), rgba(black, 0.54) ),
+);
+
+$variants: (
+  -2: 20%,
+  -1: 10%,
+  1: 10%,
+  2: 20%,
+);
+
+color(brand);     // => #C0CA33
+color(brand, 1);  // => lighten(#C0CA33, 10%)
+color(brand, -2); // => darken(#C0CA33, 20%)
+color(text);      // => rgba(black, 0.87)
+color(text, 1);   // => rgba(black, 0.54)</pre>
+
+          <p class="section__output-title"><span>example output</span></p>
+          <div class="section__output color-output">
+            <div class="color-output__item color-brand---2"></div>
+            <div class="color-output__item color-brand---1"></div>
+            <div class="color-output__item color-brand"></div>
+            <div class="color-output__item color-brand--1"></div>
+            <div class="color-output__item color-brand--2"></div>
+            <div class="color-output__item color-accent---2"></div>
+            <div class="color-output__item color-accent---1"></div>
+            <div class="color-output__item color-accent"></div>
+            <div class="color-output__item color-accent--1"></div>
+            <div class="color-output__item color-accent--2"></div>
+            <div class="color-output__item color-text---2"></div>
+            <div class="color-output__item color-text---1"></div>
+            <div class="color-output__item color-text"></div>
+            <div class="color-output__item color-text--1"></div>
+            <div class="color-output__item color-text--2"></div>
+          </div>
+      </div>
+
+      <hr />
+
+      <div class="section">
+          <h3 class="section__title"><a href="https://github.com/YuukanOO/dropee/raw/master/src/_typography.scss">_typography.scss</a></h3>
+          <p>Keep a vertical flow without hassle! Define <code>$types</code> and <code>$baseline</code> variables and then use the mixin <code>type($name)</code> to apply font-size and line-height.</p>
+          <pre>
+// Represents the height of one "line", it will be * by your html font size
+// example:
+// html { font-size: 1em; } will give baseline of 16px * 1em * 1.5 = 24px
+$baseline: 1.5;
+
+// First element is the font-size
+// Second one is how many "lines" does it span
+$types: (
+  small: (0.889, 1),
+  body: (1, 1), // 1rem with a 24px line-height
+  h1: (2.027, 2) // 2.027rem with a 48px line-height
+  // If you need to break the baseline, break it gracefuly (.5)
+  h4: (1.424, 1.5),
+);
+
+body {
+  @include type(body);
+  // => font-size: 1rem;
+  // => line-height: 1.5;
+}</pre>
+        <p class="section__output-title"><span>example output</span></p>
+        <div class="section__output type-output">
+          <p class="type-h1">Heading 1</p>
+          <p class="type-h2">Heading 2</p>
+          <p class="type-h3">Heading 3</p>
+          <p class="type-h4">Heading 4</p>
+          <p class="type-h5">Heading 5</p>
+          <p class="type-h6">Heading 6</p>
+          <p class="type-body">Put your basic stuff in there</p>
+          <p class="type-small">Small text used for captions or whatever you want, remember, YOUR rules!</p>
+        </div>
+      </div>
+
+      <hr />
+
+      <div class="section">
+        <h3 class="section__title"><a href="https://github.com/YuukanOO/dropee/raw/master/src/_grid.scss">_grid.scss</a></h3>
+        <p>I should have said <em>Flex grid</em>! Based on the <a href="https://foundation.zurb.com/sites/docs/xy-grid.html">XY Grid</a> of Foundation for Site, it gives you three mixins to easily define the most common layouts.</p>
+        <p>Use <code>row($x, $y, $wrap, $gap)</code> and <code>col($x, $y, $wrap, $gap)</code> to define your containers and <code>cell($width, $grow, $shrink, $gap)</code> for your children.</p>
+
+        <pre>
+.grid-container {
+  @include row($gap: 16px);
+  background-color: rgba(color(brand), 0.25);
+
+  .grid-item {
+    @include cell(1/5, $grow: 0);
+  }
+}</pre>
+        <p class="section__output-title"><span>example output</span></p>
+        <div class="section__output grid-output">
+          <div class="grid-container">
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+          </div>
+        </div>
+        <pre>
+.grid-container-spaced {
+  @include row($x: space-between);
+
+  .grid-item {
+    width: 100px;
+  }
+}</pre>
+        <p class="section__output-title"><span>example output</span></p>
+        <div class="section__output grid-output">
+          <div class="grid-container-spaced">
+            <div class="grid-item"></div>
+            <div class="grid-item"></div>
+          </div>
+        </div>
+
+        <pre>
+.grid-container-col {
+  @include col($x: flex-end, $y: center);
+  height: 200px;
+
+  .grid-item {
+    width: 100px;
+  }
+}</pre>
+
+        <p class="section__output-title"><span>example output</span></p>
+        <div class="section__output grid-output">
+          <div class="grid-container-col">
+            <div class="grid-item"></div>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+
+    </div>
+  </body>
+</html>

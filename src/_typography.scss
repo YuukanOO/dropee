@@ -45,6 +45,7 @@ $baseline: 1.5 !default;
 // This is where you should put your stuff to be used with the type() mixin.
 // To define sizes, I usually follow http://www.modularscale.com/
 $types: (
+  small: (0.889, 1),
   body: (1, 1),
   h6: (1.125, 1),
   h5: (1.266, 1),
