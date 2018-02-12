@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "watch": "node-sass -w -r -o ./examples ./examples/styles.scss"
+    "watch": "node-sass -w -r -o ./docs ./docs/styles.scss"
   },
   "devDependencies": {
     "node-sass": "^4.7.2"

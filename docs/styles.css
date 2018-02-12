@@ -166,14 +166,14 @@ pre {
     justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap;
-    margin: -8px;
+    margin: -12px;
     background-color: rgba(192, 202, 51, 0.25); }
     .grid-output .grid-container .grid-item {
       flex-basis: auto;
       flex-grow: 0;
       flex-shrink: 1;
-      margin: 8px;
-      width: calc(20% - 16px); }
+      margin: 12px;
+      width: calc(20% - 24px); }
   .grid-output .grid-container-spaced {
     display: flex;
     flex-direction: row;
