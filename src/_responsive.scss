@@ -1,0 +1,44 @@
+/**
+ *     __                               
+ * .--|  |.----.-----.-----.-----.-----.
+ * |  _  ||   _|  _  |  _  |  -__|  -__|
+ * |_____||__| |_____|   __|_____|_____|
+ *                   |__| -- responsive         
+ *
+ * A tiny SCSS Toolkit to ease your workflow!
+ * https://github.com/YuukanOO/dropee
+ */
+
+// Breakpoints used for media queries
+$breakpoints: (
+  phone: (
+    min-width: 0,
+    max-width: 800px
+  ),
+  desktop: (
+    min-width: 1024px
+  )
+) !default;
+
+// at($breakpoint, $media)
+//
+// Apply content to a defined breakpoint.
+//
+// $breakpoint  - Name of the breakpoint as defined in $breakpoints
+// $media       - Media used, default to screen
+@mixin at($breakpoint, $media: screen) {
+  $query: "";
+  $map: map-get($breakpoints, $breakpoint);
+  
+  @each $property, $value in $map {
+    @if index(($map), ($property $value)) != 1 {
+      $query: append($query, " and ");
+    }
+
+    $query: append($query, "(#{$property}: #{$value})");
+  }
+
+  @media #{$media} and #{$query} {
+    @content;
+  }
+}

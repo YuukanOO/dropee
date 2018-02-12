@@ -21,6 +21,7 @@ $palette: (
 @import "./../src/color";
 @import "./../src/typography";
 @import "./../src/grid";
+@import "./../src/responsive";
 
 * {
   margin: 0;
@@ -236,6 +237,16 @@ pre {
       
       .color-#{$color}--#{$variant} {
         background-color: color($color, $variant);
+      }
+    }
+  }
+}
+
+@each $breakpoint in map-keys($breakpoints) {
+  .breakpoint-#{$breakpoint} {
+    @include at($breakpoint) {
+      .breakpoint__item {
+        color: red;
       }
     }
   }
