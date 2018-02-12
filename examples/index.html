@@ -29,8 +29,10 @@
 $palette: (
   // Simplest case, variant will be computed by using $variants
   brand: #C0CA33,
-  // Or define specific variants by using a list
+  // Or define specific variants by using a list using absolute
   text: ( black, rgba(black, 0.87), rgba(black, 0.54) ),
+  // Or relative colors
+  accent: (10%, 5%, #0277BD, 5%, 10%),
 );
 
 $variants: (
@@ -40,11 +42,12 @@ $variants: (
   2: 20%,
 );
 
-color(brand);     // => #C0CA33
-color(brand, 1);  // => lighten(#C0CA33, 10%)
-color(brand, -2); // => darken(#C0CA33, 20%)
-color(text);      // => rgba(black, 0.87)
-color(text, 1);   // => rgba(black, 0.54)</pre>
+color(brand);       // => #C0CA33
+color(brand, 1);    // => lighten(#C0CA33, 10%)
+color(brand, -2);   // => darken(#C0CA33, 20%)
+color(text);        // => rgba(black, 0.87)
+color(text, 1);     // => rgba(black, 0.54)
+color(accent, -1);  // => darken(#0277BD, 5%)</pre>
 
           <p class="section__output-title"><span>example output</span></p>
           <div class="section__output color-output">

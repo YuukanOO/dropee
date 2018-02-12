@@ -11,7 +11,7 @@ $types: (
 
 $palette: (
   brand: #C0CA33,
-  accent: #0277BD,
+  accent: (10%, 5%, #0277BD, 5%, 10%),
   divider: rgba(black, 0.12),
   text: (black, rgba(black, 0.87), rgba(black, 0.54)),
   text-inverse: white,
@@ -232,8 +232,8 @@ pre {
     }
   } @else {
     @for $i from 1 through length($data) {
-      $variant: $i - (length($data) - 1);
-
+      $variant: $i - (ceil(length($data) / 2));
+      
       .color-#{$color}--#{$variant} {
         background-color: color($color, $variant);
       }

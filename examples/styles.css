@@ -111,7 +111,7 @@ pre {
   font-weight: bold;
   text-decoration: none; }
   .section a:hover {
-    color: #01578b;
+    color: #0267a4;
     text-decoration: underline; }
 
 .page-header {
@@ -214,16 +214,19 @@ pre {
   background-color: #0277BD; }
 
 .color-accent---2 {
-  background-color: #013758; }
-
-.color-accent---1 {
   background-color: #01578b; }
 
+.color-accent---1 {
+  background-color: #0267a4; }
+
+.color-accent--0 {
+  background-color: #0277BD; }
+
 .color-accent--1 {
-  background-color: #0397ef; }
+  background-color: #0287d6; }
 
 .color-accent--2 {
-  background-color: #28adfd; }
+  background-color: #0397ef; }
 
 .color-divider {
   background-color: rgba(0, 0, 0, 0.12); }

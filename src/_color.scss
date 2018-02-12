@@ -28,6 +28,22 @@ $variants: (
   2: 20%,
 ) !default;
 
+// apply-variant($color, $variant, $amount)
+//
+// Apply a variant to a base color.
+//
+// $color   - Base color to use
+// $variant - Variant asked
+// $amount  - Amount used for lighten or darken
+@function apply-variant($color, $variant, $amount) {
+  @if ($variant > 0) {
+    @return lighten($color, $amount);
+  }
+  @else {
+    @return darken($color, $amount);
+  }
+}
+
 // color($name, $variant)
 //
 // Gets a color value.
@@ -42,19 +58,20 @@ $variants: (
     @if ($variant == 0) {
       @return $data;
     }
-    @else {
-      $v-data: map-get($variants, $variant);
-      
-      @if ($variant > 0) {
-        @return lighten($data, $v-data);
-      }
-      @else {
-        @return darken($data, $v-data);
-      }
-    }
+    
+    $v-data: map-get($variants, $variant);
+    
+    @return apply-variant($data, $variant, $v-data);
   }
   
-  $options: ceil(length($data) / 2) + $variant;
-    
-  @return nth($data, $options);
+  $middle: ceil(length($data) / 2);
+  $options: $middle + $variant;
+
+  $item: nth($data, $options);
+
+  @if type-of($item) == color {
+    @return $item;
+  }
+
+  @return apply-variant(nth($data, $middle), $variant, $item);
 }
