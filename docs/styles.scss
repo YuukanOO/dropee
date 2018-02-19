@@ -141,6 +141,7 @@ pre {
 
 .page-header {
   text-align: center;
+  position: relative;
 
   &__title {
     @include type(h1);
@@ -150,6 +151,14 @@ pre {
       background-color: color(brand);
       color: color(text-inverse);
       padding: 0.25rem;
+    }
+
+    small {
+      @include type(small);
+      color: color(text, 1);
+      position: absolute;
+      font-weight: normal;
+      top: -5px;
     }
   }
 

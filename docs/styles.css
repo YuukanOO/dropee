@@ -5,6 +5,8 @@
  * |_____||__| |_____|   __|_____|_____|
  *                   |__|      -- color         
  *
+ * v1.0.0
+ *
  * A tiny SCSS Toolkit to ease your workflow!
  * https://github.com/YuukanOO/dropee
  */
@@ -14,6 +16,8 @@
  * |  _  ||   _|  _  |  _  |  -__|  -__|
  * |_____||__| |_____|   __|_____|_____|
  *                   |__| -- typography         
+ *
+ * v1.0.0
  *
  * A tiny SCSS Toolkit to ease your workflow!
  * https://github.com/YuukanOO/dropee
@@ -25,6 +29,8 @@
  * |_____||__| |_____|   __|_____|_____|
  *                   |__|       -- grid         
  *
+ * v1.0.0
+ *
  * A tiny SCSS Toolkit to ease your workflow!
  * https://github.com/YuukanOO/dropee
  */
@@ -34,6 +40,8 @@
  * |  _  ||   _|  _  |  _  |  -__|  -__|
  * |_____||__| |_____|   __|_____|_____|
  *                   |__| -- responsive         
+ *
+ * v1.0.0
  *
  * A tiny SCSS Toolkit to ease your workflow!
  * https://github.com/YuukanOO/dropee
@@ -130,7 +138,8 @@ pre {
     text-decoration: underline; }
 
 .page-header {
-  text-align: center; }
+  text-align: center;
+  position: relative; }
   .page-header__title {
     font-size: 2.027rem;
     line-height: 1.48002;
@@ -139,6 +148,13 @@ pre {
       background-color: #C0CA33;
       color: white;
       padding: 0.25rem; }
+    .page-header__title small {
+      font-size: 0.889rem;
+      line-height: 1.68729;
+      color: rgba(0, 0, 0, 0.54);
+      position: absolute;
+      font-weight: normal;
+      top: -5px; }
   .page-header__description {
     font-size: 1.424rem;
     line-height: 1.58006;
