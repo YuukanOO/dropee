@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "watch": "node-sass -w -r -o ./docs ./docs/styles.scss"
+    "build": "node-sass -r -o ./docs ./docs/styles.scss",
+    "watch": "node-sass -w -r -o ./docs ./docs/styles.scss",
+    "publish": "npm run build && npm publish"
   },
   "devDependencies": {
     "node-sass": "^4.7.2"
