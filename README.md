@@ -7,4 +7,4 @@ I'm not a Sass Guru but wanted a tiny toolkit used from prototype to production,
 
 ## Documentation & examples
 
-Have a look at the [docs/ folder](docs)!
+Have a look at the [online documentation](https://yuukanoo.github.io/dropee/)!
