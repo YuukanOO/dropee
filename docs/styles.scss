@@ -77,7 +77,12 @@ pre {
 .page {
   margin: baseline(2) auto 0 auto;
   max-width: 700px;
+  padding: 0 baseline(1);
   width: 100%;
+
+  @include on(tablet) {
+    padding: 0;
+  }
 }
 
 hr {
@@ -218,7 +223,7 @@ pre {
 .responsive-output {
   p::after {
     content: 'Default content, on phone';
-    
+
     @include on(tablet) {
       content: 'On tablet';
     }
