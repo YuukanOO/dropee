@@ -24,6 +24,7 @@ $palette: (
 @import "./../src/responsive";
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -214,6 +215,24 @@ pre {
   }
 }
 
+.responsive-output {
+  p::after {
+    content: 'Default content, on phone';
+    
+    @include on(tablet) {
+      content: 'On tablet';
+    }
+
+    @include on(desktop) {
+      content: 'On desktop';
+    }
+
+    @include on(large-desktop) {
+      content: 'On large desktop';
+    }
+  }
+}
+
 /**
  * Let's autogenerate some stuff
  */
@@ -244,7 +263,7 @@ pre {
 
 @each $breakpoint in map-keys($breakpoints) {
   .breakpoint-#{$breakpoint} {
-    @include at($breakpoint) {
+    @include on($breakpoint) {
       .breakpoint__item {
         color: red;
       }

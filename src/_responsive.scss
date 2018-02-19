@@ -9,24 +9,30 @@
  * https://github.com/YuukanOO/dropee
  */
 
-// Breakpoints used for media queries
+// Breakpoints used for media queries, default to
+// bootstrap 4
 $breakpoints: (
   phone: (
-    min-width: 0,
-    max-width: 800px
+    min-width: 576px,
+  ),
+  tablet: (
+    min-width: 768px,
   ),
   desktop: (
-    min-width: 1024px
-  )
+    min-width: 992px,
+  ),
+  large-desktop: (
+    min-width: 1200px,
+  ),
 ) !default;
 
-// at($breakpoint, $media)
+// on($breakpoint, $media)
 //
 // Apply content to a defined breakpoint.
 //
 // $breakpoint  - Name of the breakpoint as defined in $breakpoints
-// $media       - Media used, default to screen
-@mixin at($breakpoint, $media: screen) {
+// $media       - Media used, default to all
+@mixin on($breakpoint, $media: all) {
   $query: "";
   $map: map-get($breakpoints, $breakpoint);
   

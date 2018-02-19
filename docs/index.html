@@ -179,7 +179,40 @@ p {
 
       <div class="section">
         <h3 class="section__title"><a href="https://github.com/YuukanOO/dropee/raw/master/src/_responsive.scss">_responsive.scss</a></h3>
-        <p>Define breakpoints properties by using the <code>$breakpoints</code> variable and use them with the <code>at($name, $media)</code> mixin.</p>
+        <p>Define breakpoints properties by using the <code>$breakpoints</code> variable and use them with the <code>on($name, $media)</code> mixin.</p>
+
+        <pre>
+$breakpoints: (
+  phone: (
+    min-width: 576px,
+    // You can add other properties here
+  ),
+  tablet: (
+    min-width: 768px,
+  ),
+  // Other breakpoints
+);
+
+p::after {
+  content: 'Default content, on phone';
+  
+  @include on(tablet) {
+    content: 'On tablet';
+  }
+
+  @include on(desktop) {
+    content: 'On desktop';
+  }
+
+  @include on(large-desktop) {
+    content: 'On large desktop';
+  }
+}</pre>
+
+        <p class="section__output-title"><span>example output</span></p>
+        <div class="section__output responsive-output">
+          <p>This text will change based on screen size: </p>
+        </div>
       </div>
 
     </div>

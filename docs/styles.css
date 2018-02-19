@@ -39,6 +39,7 @@
  * https://github.com/YuukanOO/dropee
  */
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0; }
 
@@ -202,6 +203,18 @@ pre {
     .grid-output .grid-container-col .grid-item {
       width: 100px; }
 
+.responsive-output p::after {
+  content: 'Default content, on phone'; }
+  @media all and (min-width: 768px) {
+    .responsive-output p::after {
+      content: 'On tablet'; } }
+  @media all and (min-width: 992px) {
+    .responsive-output p::after {
+      content: 'On desktop'; } }
+  @media all and (min-width: 1200px) {
+    .responsive-output p::after {
+      content: 'On large desktop'; } }
+
 /**
  * Let's autogenerate some stuff
  */
@@ -295,12 +308,20 @@ pre {
 .color-pre--2 {
   background-color: rgba(51, 51, 51, 0.05); }
 
-@media screen and (min-width: 0) and (max-width: 800px) {
+@media all and (min-width: 576px) {
   .breakpoint-phone .breakpoint__item {
     color: red; } }
 
-@media screen and (min-width: 1024px) {
+@media all and (min-width: 768px) {
+  .breakpoint-tablet .breakpoint__item {
+    color: red; } }
+
+@media all and (min-width: 992px) {
   .breakpoint-desktop .breakpoint__item {
+    color: red; } }
+
+@media all and (min-width: 1200px) {
+  .breakpoint-large-desktop .breakpoint__item {
     color: red; } }
 
 .type-small {
