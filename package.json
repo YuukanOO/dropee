@@ -3,12 +3,12 @@
   "author": "Julien LEICHER",
   "repository": "https://github.com/YuukanOO/dropee",
   "homepage": "https://yuukanoo.github.io/dropee/",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "scripts": {
     "build": "node-sass -r -o ./docs ./docs/styles.scss",
     "watch": "node-sass -w -r -o ./docs ./docs/styles.scss",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "devDependencies": {
     "node-sass": "^4.7.2"
