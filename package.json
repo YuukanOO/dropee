@@ -3,7 +3,7 @@
   "author": "Julien LEICHER",
   "repository": "https://github.com/YuukanOO/dropee",
   "homepage": "https://yuukanoo.github.io/dropee/",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "license": "MIT",
   "scripts": {
     "build": "node-sass -r -o ./docs ./docs/styles.scss",

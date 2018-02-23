@@ -5,7 +5,7 @@
  * |_____||__| |_____|   __|_____|_____|
  *                   |__|      -- color         
  *
- * v1.0.1
+ * v1.0.2
  *
  * A tiny SCSS Toolkit to ease your workflow!
  * https://github.com/YuukanOO/dropee
@@ -44,6 +44,16 @@ $variants: (
   @else {
     @return darken($color, $amount);
   }
+}
+
+// to-rgb($rgba, $background)
+//
+// Returns a RGB representation of a RGBA given a background.
+//
+// $rgba        - Color in rgba representation
+// $background  - Background color used to apply alpha property
+@function to-rgb($rgba, $background: #fff) {
+  @return mix(rgb(red($rgba), green($rgba), blue($rgba)), $background, alpha($rgba) * 100%);
 }
 
 // color($name, $variant)
